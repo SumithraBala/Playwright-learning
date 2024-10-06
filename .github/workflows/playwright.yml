@@ -8,14 +8,14 @@ jobs:
         container:
             image: mcr.microsoft.com/playwright:v1.47.2-focal
             env:
-             ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+              ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         steps:
             - name: Checkout Repository 
               uses: actions/checkout@v2
             - name: Run tests
               run: |
                 echo "Start the shopping store app"
-                chmod +x ./shopping-store-linux-amd64 &
+                chmod +x ./shopping-store-linux-amd64 && ./shopping-store-linux-amd64 &
                 echo "Install dependencies from lockfile"
                 npm ci
                 echo "Run playwright tests"
